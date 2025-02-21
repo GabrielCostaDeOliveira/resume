@@ -1,0 +1,33 @@
+name: Compile LaTeX to PDF
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write 
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    container: texlive/texlive
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        run: |
+          pdflatex -jobname=br_resume ./br/resume.tex  
+
+      - name: Fix Git safe directory issue
+        run: git config --global --add safe.directory /__w/resume/resume
+
+      - name: Commit PDF
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'br_resume.pdf'
+          message: 'CI: Update compiled PDF [skip ci]'
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
+          push: true

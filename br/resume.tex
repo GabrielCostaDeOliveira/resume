@@ -1,0 +1,86 @@
+\documentclass[letter,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{tabularx}
+\usepackage{array}
+
+%====================
+% File:         resume.tex
+% Modifying author:       https://github.com/gobborg 
+% Last Updated: Dec 26, 2021
+% Notes:        I just made it prettier and better suited to
+%               my needs.
+%====================
+
+%====================
+% File:         resume.tex
+% Original author:       https://github.com/TimmyChan 
+%               https://www.linkedin.com/in/timmy-l-chan/
+% Last Updated: Nov 19, 2021
+% Notes:        All formatting is done in TLCresume.sty
+%               No need to touch that file. 
+%               All actual content is in the sections/ folder.
+%====================
+
+\usepackage{./br/TLCresume}
+
+%====================
+% CONTACT INFORMATION
+%====================
+\author{Gabriel Costa De Oliveira} % Name Here
+\def\phone{61 99229-1221}
+\def\city{Brasília}
+\def\email{gabriel.costa513@gmail.com}
+\def\LinkedIn{gabriel-costa-66b030193} % linkedin.com/in/______
+\def\github{GabrielCostaDeOliveira} % github username
+\def\role{Engenheiro de software} % JOB TITLE
+
+% Define a formatação da seção com linha horizontal abaixo do título
+
+
+\begin{document}
+\import{br/sections/}{_header}
+
+\import{br/sections/}{objective}
+\vspace*{21pt}
+
+
+%\section{Skills}
+%\vspace*{3pt}
+%\import{sections/}{skills}
+%\vspace*{7pt}
+
+
+\section{\Large Educação}
+\vspace*{21pt}
+\import{br/sections/}{education}
+\vspace*{21pt}
+
+
+
+
+%\section{Project Summary}
+%\vspace*{3pt}
+%\import{sections/}{projectsummary}
+%\vspace*{7pt}
+
+
+\section{\Large Experiência de trabalho recente}
+\vspace*{21pt}
+\import{br/sections/}{experience}
+\vspace*{21pt}
+
+
+\section{\Large Certificados, Reconhecimentos e Prêmios}
+\vspace*{21pt}
+\import{br/sections/}{certifications}
+\vspace*{21pt}
+
+%\section{Publications}
+%\import{sections/}{publications}
+%\vspace*{7pt}
+
+%\section{Hobbies}
+%\import{sections/}{hobbies}
+
+\end{document}
