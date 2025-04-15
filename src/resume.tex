@@ -1,6 +1,6 @@
 \documentclass[letter,10pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{CJKutf8}
+% \usepackage{CJKutf8}
 \usepackage{tabularx}
 \usepackage{array}
 
@@ -22,7 +22,7 @@
 %               All actual content is in the sections/ folder.
 %====================
 
-\usepackage{./br/TLCresume}
+\usepackage{./src/TLCresume}
 
 %====================
 % CONTACT INFORMATION
@@ -39,17 +39,17 @@
 
 
 \begin{document}
-\import{br/sections/}{_header}
+\import{src}{_header}
 
 
 \vspace*{21pt}
-\import{br/sections/}{summary}
+\import{src/br/sections/}{summary}
 \vspace*{21pt}
 
 
 \section{\Large Educação}
 \vspace*{21pt}
-\import{br/sections/}{education}
+\import{src/br/sections/}{education}
 \vspace*{21pt}
 
 
@@ -61,19 +61,19 @@
 
 \section{\Large Experiência de trabalho recente}
 \vspace*{21pt}
-\import{br/sections/}{experience}
+\import{src/br/sections/}{experience}
 \vspace*{21pt}
 
 
 \section{\Large Habilidades}
 \vspace*{21pt}
-\import{br/sections/}{skills}
+\import{src/br/sections/}{skills}
 \vspace*{21pt}
 
 
 \section{\Large Certificados, Reconhecimentos e Prêmios}
 \vspace*{21pt}
-\import{br/sections/}{certifications}
+\import{src/br/sections/}{certifications}
 \vspace*{21pt}
 
 %\section{Publications}

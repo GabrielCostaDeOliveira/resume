@@ -18,7 +18,7 @@ jobs:
 
       - name: Compile LaTeX document
         run: |
-          pdflatex -jobname=br_resume ./br/resume.tex  
+          lualatex -jobname=./output/br_resume ./src/resume.tex
 
       - name: Fix Git safe directory issue
         run: git config --global --add safe.directory /__w/resume/resume
