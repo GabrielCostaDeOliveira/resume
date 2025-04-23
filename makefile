@@ -2,7 +2,7 @@ TEXFILE=./src/resume.tex
 
 .PHONY: all br en clean
 
-all: br
+all: en br
 
 br:
 	sed -i 's/lang *= *".*"/lang = "br"/' $(TEXFILE)
