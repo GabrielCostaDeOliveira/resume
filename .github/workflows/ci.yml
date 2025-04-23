@@ -18,7 +18,7 @@ jobs:
 
       - name: Compile LaTeX document
         run: |
-          lualatex -jobname=./output/br_resume ./src/resume.tex
+          make
 
       - name: Fix Git safe directory issue
         run: git config --global --add safe.directory /__w/resume/resume
@@ -26,7 +26,7 @@ jobs:
       - name: Commit PDF
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'br_resume.pdf'
+          add: 'output/br_resume.pdf output/en_resume.pdf'
           message: 'CI: Update compiled PDF [skip ci]'
           committer_name: GitHub Actions
           committer_email: actions@github.com
