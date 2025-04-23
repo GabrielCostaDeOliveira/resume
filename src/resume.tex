@@ -23,6 +23,7 @@
 %====================
 
 \usepackage{./src/TLCresume}
+\usepackage{luacode}
 
 %====================
 % CONTACT INFORMATION
@@ -35,52 +36,60 @@
 \def\github{GabrielCostaDeOliveira} % github username
 \def\role{Engenheiro de software} % JOB TITLE
 
-% Define a formatação da seção com linha horizontal abaixo do título
+
+\begin{luacode}
+  lang = "br"
+
+  translations = {
+      br = {
+          role = "Engenheiro de software",
+          sections = {
+              summary = "",
+              education = "Educação", 
+              experience = "Experiência de trabalho recente",
+              skills = "Habilidades",
+              certs = "Certificados, Reconhecimentos e Prêmios",
+          }
+      },
+      en = {
+          role = "Software Engineer",
+          sections = {
+              summary = "",
+              education = "Education",
+              experience = "Recent Work Experience",
+              skills = "Skills",
+              certs = "Certifications, Awards, and Honors",
+          }
+      }
+  }
+
+  function gettranslation(key)
+      return translations[lang].sections[key] or ""
+  end
+\end{luacode}
+
+\newcommand{\basesection}[1]{%
+    \section{\Large\directlua{tex.sprint(gettranslation("#1"))}}%
+    \vspace*{21pt}%
+    \import{src/\directlua{tex.sprint(lang)}/sections/}{#1}%
+    \vspace*{21pt}%
+}
+
+
 
 
 \begin{document}
+
 \import{src}{_header}
 
 
-\vspace*{21pt}
-\import{src/br/sections/}{summary}
-\vspace*{21pt}
-
-
-\section{\Large Educação}
-\vspace*{21pt}
-\import{src/br/sections/}{education}
-\vspace*{21pt}
-
-
-%\section{Project Summary}
-%\vspace*{21pt}
-%\import{sections/}{projectsummary}
-%\vspace*{21pt}
-
-
-\section{\Large Experiência de trabalho recente}
-\vspace*{21pt}
-\import{src/br/sections/}{experience}
-\vspace*{21pt}
-
-
-\section{\Large Habilidades}
-\vspace*{21pt}
-\import{src/br/sections/}{skills}
-\vspace*{21pt}
-
-
-\section{\Large Certificados, Reconhecimentos e Prêmios}
-\vspace*{21pt}
-\import{src/br/sections/}{certifications}
-\vspace*{21pt}
-
-%\section{Publications}
-%\import{sections/}{publications}
-%\vspace*{7pt}
-
-%\section{Hobbies}
-%\import{sections/}{hobbies}
+\basesection{summary}
+\basesection{education}
+%\basesection{projectsummary}
+\basesection{experience}
+\basesection{skills}
+\basesection{certifications}
+% \basesection{publications}
+% \basesection{hobbies}
 
 \end{document}
