@@ -25,57 +25,60 @@
 \usepackage{./src/TLCresume}
 \usepackage{luacode}
 
-%====================
-% CONTACT INFORMATION
-%====================
-\author{Gabriel Costa De Oliveira} % Name Here
-\def\phone{61 99229-1221}
-\def\city{Brasília}
-\def\email{gabriel.costa513@gmail.com}
-\def\LinkedIn{gabriel-costa-66b030193} % linkedin.com/in/______
-\def\github{GabrielCostaDeOliveira} % github username
-\def\role{Engenheiro de software} % JOB TITLE
-
-
 \begin{luacode}
   lang = "br"
 
   translations = {
       br = {
           role = "Engenheiro de software",
-          sections = {
-              summary = "",
-              education = "Educação", 
-              experience = "Experiência de trabalho recente",
-              skills = "Habilidades",
-              certs = "Certificados, Reconhecimentos e Prêmios",
-          }
+          city = "Brasília, Brasil",
+
+          summary = "",
+          education = "Educação", 
+          experience = "Experiência de trabalho recente",
+          skills = "Habilidades",
+          certs = "Certificados, Reconhecimentos e Prêmios",
       },
       en = {
           role = "Software Engineer",
-          sections = {
-              summary = "",
-              education = "Education",
-              experience = "Recent Work Experience",
-              skills = "Skills",
-              certs = "Certifications, Awards, and Honors",
-          }
+          city = "Brasília, Brazil",
+
+          summary = "",
+          education = "Education",
+          experience = "Recent Work Experience",
+          skills = "Skills",
+          certs = "Certifications, Awards, and Honors",
       }
   }
 
   function gettranslation(key)
-      return translations[lang].sections[key] or ""
+      return tex.sprint(translations[lang][key])
   end
+
 \end{luacode}
 
 \newcommand{\basesection}[1]{%
-    \section{\Large\directlua{tex.sprint(gettranslation("#1"))}}%
+    \section{\Large\directlua{gettranslation("#1")}}%
     \vspace*{21pt}%
     \import{src/\directlua{tex.sprint(lang)}/sections/}{#1}%
     \vspace*{21pt}%
 }
 
+\newcommand{\gettranslation}[1]{%
+  \directlua{gettranslation("#1")}%
+}
 
+
+%====================
+% CONTACT INFORMATION
+%====================
+\author{Gabriel Costa De Oliveira}       % Name Here
+\def\phone{+55 (61) 99229-1221}
+\def\city{\gettranslation{city}}
+\def\email{gabriel.costa513@gmail.com}
+\def\LinkedIn{gabriel-costa-66b030193}   % linkedin.com/in/______
+\def\github{GabrielCostaDeOliveira}      % github username
+\def\role{\gettranslation{role}}         % JOB TITLE
 
 
 \begin{document}
